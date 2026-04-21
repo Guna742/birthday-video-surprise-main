@@ -8,9 +8,10 @@ import { MemoriesScreen } from "@/components/screens/MemoriesScreen";
 import { LetterScreen } from "@/components/screens/LetterScreen";
 import { SongScreen } from "@/components/screens/SongScreen";
 import { FutureScreen } from "@/components/screens/FutureScreen";
+import { PasscodeScreen } from "@/components/screens/PasscodeScreen";
 import { Confetti, FloatingHearts } from "@/components/FloatingHearts";
 
-type Screen = "loading" | "hello" | "cake" | "birthday" | "gifts" | GiftId;
+type Screen = "loading" | "passcode" | "hello" | "cake" | "birthday" | "gifts" | GiftId;
 
 // 💖 CHANGE HER NAME HERE 💖
 const HER_NAME = "My Love";
@@ -35,7 +36,8 @@ const Index = () => {
       <Confetti active={confetti} />
 
       <div className="relative z-10">
-        {screen === "loading" && <LoadingScreen onDone={() => setScreen("hello")} />}
+        {screen === "loading" && <LoadingScreen onDone={() => setScreen("passcode")} />}
+        {screen === "passcode" && <PasscodeScreen onSuccess={() => setScreen("hello")} />}
         {screen === "hello" && <HelloScreen name={HER_NAME} onYes={() => setScreen("cake")} />}
         {screen === "cake" && (
           <CakeScreen 
