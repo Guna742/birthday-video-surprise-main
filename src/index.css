@@ -1,0 +1,188 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Dancing+Script:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Quicksand:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Soft cream paper canvas */
+    --background: 350 60% 97%;
+    --foreground: 350 35% 22%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 350 35% 22%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 350 35% 22%;
+
+    /* Soft romantic pink */
+    --primary: 345 75% 60%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Blush */
+    --secondary: 350 70% 92%;
+    --secondary-foreground: 345 50% 30%;
+
+    --muted: 345 40% 94%;
+    --muted-foreground: 345 20% 45%;
+
+    --accent: 340 80% 75%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 345 40% 88%;
+    --input: 345 40% 88%;
+    --ring: 345 75% 60%;
+
+    --radius: 1.25rem;
+
+    /* Romantic semantic palette */
+    --rose: 345 75% 60%;
+    --rose-deep: 345 70% 45%;
+    --rose-soft: 345 80% 88%;
+    --blush: 350 70% 92%;
+    --cream: 35 60% 96%;
+    --gold: 38 75% 60%;
+
+    /* Gradients */
+    --gradient-sky: linear-gradient(135deg, hsl(350 80% 96%) 0%, hsl(345 70% 92%) 50%, hsl(340 75% 90%) 100%);
+    --gradient-rose: linear-gradient(135deg, hsl(345 80% 75%) 0%, hsl(345 75% 60%) 100%);
+    --gradient-card: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(350 80% 98%) 100%);
+    --gradient-warm: radial-gradient(ellipse at top, hsl(40 90% 92%) 0%, hsl(350 80% 95%) 60%, hsl(345 70% 92%) 100%);
+
+    /* Shadows */
+    --shadow-soft: 0 10px 40px -10px hsl(345 70% 60% / 0.25);
+    --shadow-card: 0 20px 50px -20px hsl(345 60% 50% / 0.3);
+    --shadow-glow: 0 0 60px hsl(345 80% 75% / 0.5);
+    --shadow-paper: 0 2px 4px hsl(345 30% 50% / 0.08), 0 8px 24px hsl(345 30% 50% / 0.12);
+
+    /* Transitions */
+    --bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    --smooth: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}
+
+@layer base {
+  * { @apply border-border; }
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Quicksand', sans-serif;
+    background: var(--gradient-warm);
+    background-attachment: fixed;
+    overflow-x: hidden;
+  }
+  ::selection { background: hsl(var(--rose) / 0.3); }
+}
+
+@layer utilities {
+  .font-handwritten { font-family: 'Caveat', cursive; }
+  .font-script { font-family: 'Dancing Script', cursive; }
+  .font-serif-romantic { font-family: 'Playfair Display', serif; }
+  .font-body { font-family: 'Quicksand', sans-serif; }
+
+  .text-rose { color: hsl(var(--rose)); }
+  .text-rose-deep { color: hsl(var(--rose-deep)); }
+  .bg-rose { background: hsl(var(--rose)); }
+  .bg-blush { background: hsl(var(--blush)); }
+  .bg-cream { background: hsl(var(--cream)); }
+  .bg-gradient-rose { background: var(--gradient-rose); }
+  .bg-gradient-warm { background: var(--gradient-warm); }
+  .bg-gradient-card { background: var(--gradient-card); }
+
+  .shadow-soft { box-shadow: var(--shadow-soft); }
+  .shadow-card { box-shadow: var(--shadow-card); }
+  .shadow-glow { box-shadow: var(--shadow-glow); }
+  .shadow-paper { box-shadow: var(--shadow-paper); }
+
+  .paper-texture {
+    background-image:
+      radial-gradient(circle at 20% 30%, hsl(345 50% 90% / 0.4) 0%, transparent 40%),
+      radial-gradient(circle at 80% 70%, hsl(40 80% 90% / 0.3) 0%, transparent 40%),
+      linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(350 60% 99%) 100%);
+  }
+}
+
+/* === Animations === */
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-12px) rotate(2deg); }
+}
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0) translateX(0) rotate(0deg); }
+  33% { transform: translateY(-20px) translateX(10px) rotate(5deg); }
+  66% { transform: translateY(10px) translateX(-8px) rotate(-3deg); }
+}
+@keyframes heart-pop {
+  0% { transform: scale(0) rotate(-30deg); opacity: 0; }
+  50% { transform: scale(1.3) rotate(10deg); }
+  100% { transform: scale(1) rotate(0deg); opacity: 1; }
+}
+@keyframes pulse-soft {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+@keyframes wiggle {
+  0%, 100% { transform: rotate(-3deg); }
+  50% { transform: rotate(3deg); }
+}
+@keyframes rise-fade {
+  0% { transform: translateY(0) scale(0.8); opacity: 0; }
+  20% { opacity: 1; }
+  100% { transform: translateY(-100vh) scale(1.4); opacity: 0; }
+}
+@keyframes confetti-fall {
+  0% { transform: translateY(-20vh) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(110vh) rotate(720deg); opacity: 0; }
+}
+@keyframes draw {
+  to { stroke-dashoffset: 0; }
+}
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+@keyframes spin-slow {
+  to { transform: rotate(360deg); }
+}
+@keyframes typewriter {
+  from { width: 0; }
+  to { width: 100%; }
+}
+@keyframes pop-in {
+  0% { transform: scale(0); opacity: 0; }
+  60% { transform: scale(1.15); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
+}
+@keyframes slide-up-fade {
+  from { transform: translateY(40px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+@keyframes scale-bounce-in {
+  0% { transform: scale(0) rotate(-180deg); opacity: 0; }
+  60% { transform: scale(1.1) rotate(10deg); opacity: 1; }
+  100% { transform: scale(1) rotate(0deg); }
+}
+
+.animate-float { animation: float 4s ease-in-out infinite; }
+.animate-float-slow { animation: float-slow 7s ease-in-out infinite; }
+.animate-heart-pop { animation: heart-pop 0.6s var(--bounce) both; }
+.animate-pulse-soft { animation: pulse-soft 2s ease-in-out infinite; }
+.animate-wiggle { animation: wiggle 1s ease-in-out infinite; }
+.animate-rise-fade { animation: rise-fade 4s ease-out forwards; }
+.animate-confetti-fall { animation: confetti-fall 3.5s linear forwards; }
+.animate-spin-slow { animation: spin-slow 6s linear infinite; }
+.animate-pop-in { animation: pop-in 0.6s var(--bounce) both; }
+.animate-slide-up-fade { animation: slide-up-fade 0.7s var(--smooth) both; }
+.animate-scale-bounce-in { animation: scale-bounce-in 0.8s var(--bounce) both; }
+
+.shimmer-text {
+  background: linear-gradient(90deg, hsl(var(--rose)) 0%, hsl(var(--gold)) 50%, hsl(var(--rose)) 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shimmer 3s linear infinite;
+}
