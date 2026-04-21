@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { LoadingScreen } from "@/components/screens/LoadingScreen";
 import { HelloScreen } from "@/components/screens/HelloScreen";
 import { CakeScreen } from "@/components/screens/CakeScreen";
@@ -18,6 +18,11 @@ const HER_NAME = "My Love";
 const Index = () => {
   const [screen, setScreen] = useState<Screen>("loading");
   const [confetti, setConfetti] = useState(false);
+
+  // Scroll to top whenever screen changes
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [screen]);
 
   const fireConfetti = () => {
     setConfetti(true);
