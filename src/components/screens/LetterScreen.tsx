@@ -4,9 +4,10 @@ import { Heart } from "lucide-react";
 export const LetterScreen = ({ name, onBack }: { name: string; onBack: () => void }) => {
   return (
     <div className="min-h-screen px-6 py-14 flex flex-col items-center animate-fade-in">
-      <h2 className="font-script text-5xl md:text-6xl text-rose-deep text-center">A Special Message</h2>
+      <h2 className="font-script text-4xl md:text-5xl lg:text-6xl text-rose-deep text-center px-4">A Special Message</h2>
+      <p className="font-serif italic text-muted-foreground mt-2 md:hidden">Scroll to read</p>
 
-      <div className="bg-white shadow-card rounded-2xl max-w-2xl w-full mt-10 p-8 md:p-12 paper-texture border border-rose-soft relative animate-slide-up-fade">
+      <div className="bg-white shadow-card rounded-2xl max-w-2xl w-full mt-10 p-6 md:p-12 paper-texture border border-rose-soft relative animate-slide-up-fade">
         <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-white p-2 rounded-full border border-rose-soft shadow-soft">
           <Heart className="text-rose fill-rose animate-pulse-soft" size={32} />
         </div>

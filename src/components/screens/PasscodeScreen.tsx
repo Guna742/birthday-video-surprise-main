@@ -34,13 +34,13 @@ export const PasscodeScreen = ({ onSuccess }: PasscodeScreenProps) => {
 
   return (
     <div className="min-h-screen bg-[#FADADD] flex flex-col items-center justify-center p-4 md:p-8 animate-fade-in font-quicksand">
-      <div className="max-w-5xl w-full flex flex-col md:flex-row items-center justify-between gap-12 bg-white/30 backdrop-blur-md rounded-[3rem] p-8 md:p-12 shadow-xl border border-white/40">
+      <div className="max-w-5xl w-full flex flex-col md:flex-row items-center justify-between gap-8 md:gap-12 bg-white/30 backdrop-blur-md rounded-[2rem] md:rounded-[3rem] p-4 md:p-12 shadow-xl border border-white/40">
         
         {/* Left Side - Polaroid Section */}
         <div className="relative w-full md:w-1/2 flex justify-center scale-90 md:scale-100">
-          <div className="bg-white p-4 pb-16 rotate-[-2deg] shadow-2xl relative transition-transform hover:rotate-0 duration-500">
+          <div className="bg-white p-3 md:p-4 pb-12 md:pb-16 rotate-[-2deg] shadow-2xl relative transition-transform hover:rotate-0 duration-500">
             {/* The Photo */}
-            <div className="w-[300px] h-[340px] overflow-hidden bg-muted relative">
+            <div className="w-[260px] h-[300px] md:w-[300px] md:h-[340px] overflow-hidden bg-muted relative">
               <img 
                 src="https://images.unsplash.com/photo-1549416805-095df93a6df7?q=80&w=1000&auto=format&fit=crop" 
                 alt="Couple with flowers" 

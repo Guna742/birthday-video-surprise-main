@@ -16,14 +16,14 @@ export const GiftsScreen = ({ onPick }: { onPick: (id: GiftId) => void }) => {
       <div className="animate-float">
         <Kitty mood="love" size={120} />
       </div>
-      <h2 className="font-script text-5xl md:text-6xl text-rose-deep mt-4">
+      <h2 className="font-script text-4xl md:text-6xl text-rose-deep mt-4 px-4">
         These are for you ♥
       </h2>
       <p className="font-serif italic text-lg md:text-xl text-muted-foreground mt-2">
         Tap each gift to open it
       </p>
 
-      <div className="grid grid-cols-2 gap-5 md:gap-7 mt-10 max-w-2xl w-full">
+      <div className="grid grid-cols-2 gap-4 md:gap-7 mt-10 max-w-2xl w-full">
         {gifts.map((g, i) => (
           <button
             key={g.id}

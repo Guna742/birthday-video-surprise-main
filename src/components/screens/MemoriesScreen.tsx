@@ -77,7 +77,7 @@ export const MemoriesScreen = ({ onBack }: { onBack: () => void }) => {
       </h2>
 
       {/* Full-Card Carousel Container */}
-      <div className="w-full max-w-[380px] relative z-10 mb-10">
+      <div className="w-full max-w-[340px] md:max-w-[380px] px-2 relative z-10 mb-10">
         <Carousel className="w-full">
           <CarouselContent className="-ml-0">
             {photos.map((photo, index) => (
