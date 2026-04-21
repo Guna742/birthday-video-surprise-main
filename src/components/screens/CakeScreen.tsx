@@ -1,5 +1,6 @@
 import { useState, useRef } from "react";
 import { Kitty } from "../Kitty";
+import { Sparkles } from "lucide-react";
 
 export const CakeScreen = ({ onCut }: { onCut: () => void }) => {
   const [cut, setCut] = useState(false);
@@ -30,11 +31,9 @@ export const CakeScreen = ({ onCut }: { onCut: () => void }) => {
       <div className={`relative transition-transform duration-700 ${cut ? "scale-110" : "animate-float"}`}>
         <Kitty mood="cake" size={220} />
         {cut && (
-          <>
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="text-7xl animate-heart-pop" style={{ animationDelay: "0.2s" }}>✨</div>
-            </div>
-          </>
+          <div className="absolute inset-0 flex items-center justify-center">
+            <Sparkles className="text-rose animate-heart-pop size-16" />
+          </div>
         )}
       </div>
       <p className="font-handwritten text-2xl text-muted-foreground mt-8 animate-pulse-soft">

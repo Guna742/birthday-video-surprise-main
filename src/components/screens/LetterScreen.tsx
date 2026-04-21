@@ -1,4 +1,5 @@
 import { BackButton } from "../BackButton";
+import { Heart } from "lucide-react";
 
 export const LetterScreen = ({ name, onBack }: { name: string; onBack: () => void }) => {
   return (
@@ -6,7 +7,9 @@ export const LetterScreen = ({ name, onBack }: { name: string; onBack: () => voi
       <h2 className="font-script text-5xl md:text-6xl text-rose-deep text-center">A Special Message</h2>
 
       <div className="bg-white shadow-card rounded-2xl max-w-2xl w-full mt-10 p-8 md:p-12 paper-texture border border-rose-soft relative animate-slide-up-fade">
-        <div className="absolute -top-4 left-1/2 -translate-x-1/2 text-4xl">💌</div>
+        <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-white p-2 rounded-full border border-rose-soft shadow-soft">
+          <Heart className="text-rose fill-rose animate-pulse-soft" size={32} />
+        </div>
 
         <p className="font-handwritten text-3xl text-rose-deep mb-4">Dear {name},</p>
         <div className="font-serif italic text-foreground/80 text-lg leading-relaxed space-y-4">
