@@ -1,6 +1,5 @@
 import { useState, useRef } from "react";
-import { Kitty } from "../Kitty";
-import { Sparkles } from "lucide-react";
+import { ConfettiBurst } from "../FloatingHearts";
 
 export const CakeScreen = ({ onCut }: { onCut: () => void }) => {
   const [cut, setCut] = useState(false);
@@ -9,7 +8,7 @@ export const CakeScreen = ({ onCut }: { onCut: () => void }) => {
   const trigger = () => {
     if (cut) return;
     setCut(true);
-    setTimeout(onCut, 1800);
+    setTimeout(onCut, 3500); 
   };
 
   const onPointerDown = (e: React.PointerEvent) => { startX.current = e.clientX; };
@@ -25,20 +24,25 @@ export const CakeScreen = ({ onCut }: { onCut: () => void }) => {
       onPointerUp={onPointerUp}
       onClick={trigger}
     >
+      <ConfettiBurst active={cut} />
+      
       <h2 className="font-script text-3xl md:text-5xl text-rose-deep text-center mb-8 animate-pop-in">
-        Swipe anywhere to cut the cake!
+        {cut ? "Happy Birthday, My Girl! 💖" : "Swipe anywhere to cut the cake!"}
       </h2>
+
       <div className={`relative transition-transform duration-700 ${cut ? "scale-110" : "animate-float"}`}>
-        <Kitty mood="cake" size={220} />
-        {cut && (
-          <div className="absolute inset-0 flex items-center justify-center">
-            <Sparkles className="text-rose animate-heart-pop size-16" />
-          </div>
-        )}
+        <img 
+          src="/cake_doll.gif" 
+          alt="Cute doll with cake" 
+          className="w-64 h-64 md:w-80 md:h-80 object-contain mx-auto" 
+        />
       </div>
-      <p className="font-handwritten text-2xl text-muted-foreground mt-8 animate-pulse-soft">
-        ↤ swipe ↦  or tap
-      </p>
+
+      {!cut && (
+        <p className="font-handwritten text-2xl text-muted-foreground mt-8 animate-pulse-soft">
+          ↤ swipe ↦  or tap
+        </p>
+      )}
     </div>
   );
 };

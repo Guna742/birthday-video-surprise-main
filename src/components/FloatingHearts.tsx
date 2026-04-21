@@ -66,3 +66,48 @@ export const Confetti = ({ active }: { active: boolean }) => {
     </div>
   );
 };
+
+export const ConfettiBurst = ({ active }: { active: boolean }) => {
+  if (!active) return null;
+  const pieces = Array.from({ length: 80 });
+  const colors = ["hsl(345 80% 65%)", "hsl(40 90% 65%)", "hsl(290 70% 75%)", "hsl(180 60% 65%)", "hsl(15 85% 65%)"];
+  
+  return (
+    <div className="pointer-events-none fixed inset-0 overflow-hidden z-50 flex items-center justify-center">
+      <div className="relative mb-[30vh]"> {/* Origin point slightly above center */}
+        {pieces.map((_, i) => {
+          const x = (Math.random() - 0.5) * 600;
+          const y = -Math.random() * 400 - 100;
+          const xEnd = x + (Math.random() - 0.5) * 200;
+          const r = Math.random() * 360;
+          const rEnd = r + Math.random() * 720;
+          const delay = Math.random() * 0.2;
+          const duration = 2.5 + Math.random() * 2;
+          const color = colors[i % colors.length];
+          const size = 8 + Math.random() * 10;
+          
+          return (
+            <div
+              key={i}
+              className="absolute animate-confetti-burst"
+              style={{
+                width: size,
+                height: size * 1.6,
+                backgroundColor: color,
+                borderRadius: i % 3 === 0 ? "50%" : "2px",
+                // @ts-ignore
+                "--x": `${x}px`,
+                "--y": `${y}px`,
+                "--x-end": `${xEnd}px`,
+                "--r": `${r}deg`,
+                "--r-end": `${rEnd}deg`,
+                animationDelay: `${delay}s`,
+                animationDuration: `${duration}s`,
+              }}
+            />
+          );
+        })}
+      </div>
+    </div>
+  );
+};

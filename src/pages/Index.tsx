@@ -38,7 +38,9 @@ const Index = () => {
         {screen === "loading" && <LoadingScreen onDone={() => setScreen("hello")} />}
         {screen === "hello" && <HelloScreen name={HER_NAME} onYes={() => setScreen("cake")} />}
         {screen === "cake" && (
-          <CakeScreen onCut={() => { fireConfetti(); setScreen("birthday"); }} />
+          <CakeScreen 
+            onCut={() => { fireConfetti(); setScreen("birthday"); }} 
+          />
         )}
         {screen === "birthday" && (
           <HappyBirthdayScreen name={HER_NAME} onContinue={() => setScreen("gifts")} />
