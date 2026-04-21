@@ -27,7 +27,7 @@ export const LetterScreen = ({ name, onBack }: { name: string; onBack: () => voi
           </p>
           <p className="font-script text-2xl text-rose not-italic mt-6">
             Forever yours,<br />
-            Me ♥
+            Mama ♥
           </p>
         </div>
       </div>
