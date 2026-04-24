@@ -5,6 +5,7 @@ export const HelloScreen = ({ name, onYes }: { name: string; onYes: () => void }
   const [noPos, setNoPos] = useState({ x: 0, y: 0 });
   const [stage, setStage] = useState<"ask" | "yes">("ask");
 
+  const dodge = () => {
     const rangeX = window.innerWidth < 768 ? 140 : 320;
     const rangeY = window.innerWidth < 768 ? 100 : 240;
     setNoPos({

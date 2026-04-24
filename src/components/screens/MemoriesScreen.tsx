@@ -1,165 +1,87 @@
 import { BackButton } from "../BackButton";
-import { 
-  Heart, 
-  MessageCircle, 
-  Send, 
-  Bookmark, 
-  MessageSquare
-} from "lucide-react";
-import { 
-  Carousel, 
-  CarouselContent, 
-  CarouselItem, 
-  CarouselNext, 
-  CarouselPrevious 
-} from "@/components/ui/carousel";
-import { Kitty } from "../Kitty";
-
-const photos = [
-  { 
-    url: "https://images.unsplash.com/photo-1518199266791-5375a83190b7?q=80&w=800&auto=format&fit=crop", 
-    caption: "where it all began ♥",
-    location: "First Hello"
-  },
-  { 
-    url: "https://images.unsplash.com/photo-1516589174184-c685266d4af4?q=80&w=800&auto=format&fit=crop", 
-    caption: "every moment is a treasure",
-    location: "Paris Dreams"
-  },
-  { 
-    url: "https://images.unsplash.com/photo-1513297887119-d46091b24bfa?q=80&w=800&auto=format&fit=crop", 
-    caption: "you make everything festive",
-    location: "Celebration Night"
-  },
-  { 
-    url: "https://images.unsplash.com/photo-1501901664589-51b878c282f1?q=80&w=800&auto=format&fit=crop", 
-    caption: "walking into our future together",
-    location: "Forever Road"
-  },
-];
+import { Heart } from "lucide-react";
 
 export const MemoriesScreen = ({ onBack }: { onBack: () => void }) => {
   return (
-    <div className="min-h-screen px-4 py-14 flex flex-col items-center animate-fade-in relative overflow-hidden">
-      {/* Decorative 3D Hearts */}
-      <div className="absolute top-20 -left-10 md:left-20 animate-float opacity-80 pointer-events-none">
-        <svg width="100" height="100" viewBox="0 0 200 200">
-          <defs>
-            <radialGradient id="heartGrad" cx="30%" cy="30%" r="70%">
-              <stop offset="0%" stopColor="#ff85a1" />
-              <stop offset="100%" stopColor="#e01e5a" />
-            </radialGradient>
-            <filter id="shadow">
-              <feDropShadow dx="0" dy="10" stdDeviation="8" floodOpacity="0.3" />
-            </filter>
-          </defs>
+    <div className="min-h-screen bg-[#f0f0f0] p-8 relative overflow-hidden animate-fade-in font-handwritten">
+      {/* "Your pics here" Annotation */}
+      <div className="absolute left-10 top-1/2 -translate-y-1/2 z-10 flex flex-col items-center animate-float">
+        <svg width="120" height="120" viewBox="0 0 200 200" className="text-rose-deep opacity-80">
           <path 
-            d="M100 180 C-50 120 -20 40 100 80 C220 40 250 120 100 180 Z" 
-            fill="url(#heartGrad)" 
-            filter="url(#shadow)"
+            d="M50 150 Q70 100 120 80 M120 80 L100 85 M120 80 L115 100" 
+            fill="none" 
+            stroke="currentColor" 
+            strokeWidth="3" 
+            strokeLinecap="round"
+          />
+          <path 
+            d="M30 140 C10 120 40 100 50 120 C60 100 90 120 70 140 Z" 
+            fill="none" 
+            stroke="currentColor" 
+            strokeWidth="2"
           />
         </svg>
+        <p className="text-rose-deep text-2xl -mt-4 transform -rotate-12">Your pics here</p>
       </div>
 
-      <div className="absolute bottom-40 -right-10 md:right-20 animate-float-slow opacity-90 pointer-events-none" style={{ animationDelay: "1s" }}>
-        <svg width="80" height="80" viewBox="0 0 200 200">
-          <path 
-            d="M100 180 C-50 120 -20 40 100 80 C220 40 250 120 100 180 Z" 
-            fill="url(#heartGrad)" 
-            filter="url(#shadow)"
-            transform="rotate(15, 100, 100) scale(0.8)"
-          />
-        </svg>
-      </div>
-
-      <h2 className="font-script text-5xl md:text-6xl text-rose-deep text-center mb-10 z-10">
-        Captured Memories
-      </h2>
-
-      {/* Full-Card Carousel Container */}
-      <div className="w-full max-w-[340px] md:max-w-[380px] px-2 relative z-10 mb-10">
-        <Carousel className="w-full">
-          <CarouselContent className="-ml-0">
-            {photos.map((photo, index) => (
-              <CarouselItem key={index} className="pl-0">
-                {/* Instagram Post Card */}
-                <div className="bg-white border border-rose-soft rounded-2xl shadow-card overflow-hidden transition-all duration-300">
-                  {/* IG Header */}
-                  <div className="flex items-center justify-between px-3 py-2 border-b border-rose-soft/30">
-                    <div className="flex items-center gap-2">
-                      <div className="w-8 h-8 rounded-full border border-rose-soft p-0.5 bg-gradient-rose">
-                        <div className="w-full h-full rounded-full bg-white flex items-center justify-center overflow-hidden">
-                          <Kitty mood="love" size={28} />
-                        </div>
-                      </div>
-                      <div className="flex flex-col">
-                        <span className="font-bold text-xs text-foreground leading-tight">your_forever_love</span>
-                        <span className="text-[9px] text-muted-foreground uppercase tracking-widest font-body">{photo.location}</span>
-                      </div>
-                    </div>
-                    <div className="flex items-center gap-3 text-rose-deep">
-                      <Heart size={16} className="hover:scale-110 transition-transform cursor-pointer" />
-                      <MessageSquare size={16} className="hover:scale-110 transition-transform cursor-pointer" />
-                    </div>
-                  </div>
-
-                  {/* Image Area */}
-                  <div className="relative aspect-square bg-muted overflow-hidden">
-                    <img 
-                      src={photo.url} 
-                      alt={photo.caption} 
-                      className="w-full h-full object-cover"
-                    />
-                    {/* Caption Overlay */}
-                    <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/50 to-transparent p-4">
-                      <p className="font-handwritten text-white text-xl drop-shadow-sm italic">
-                        {photo.caption}
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* IG Footer */}
-                  <div className="p-3 flex flex-col gap-2 font-body">
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center gap-3">
-                        <Heart size={20} className="text-rose-deep fill-rose-deep hover:scale-110 transition-transform cursor-pointer" />
-                        <MessageCircle size={20} className="text-rose-deep hover:scale-110 transition-transform cursor-pointer" />
-                        <Send size={20} className="text-rose-deep hover:scale-110 transition-transform cursor-pointer" />
-                      </div>
-                      <Bookmark size={20} className="text-rose-deep hover:scale-110 transition-transform cursor-pointer" />
-                    </div>
-                    
-                    <div className="space-y-0.5">
-                      <p className="text-[12px] font-bold text-foreground leading-tight">
-                        Liked by <span className="hover:underline cursor-pointer">perfect_match</span> and 842 others
-                      </p>
-                      <p className="text-[12px] text-foreground/80 leading-snug">
-                        <span className="font-bold mr-1">your_forever_love</span>
-                        {index === 0 && "Our very first moment... ♥"}
-                        {index === 1 && "The best trip we ever took together!"}
-                        {index === 2 && "Everything is better when you're here."}
-                        {index === 3 && "So many more memories to make. Happy Birthday! ♥"}
-                      </p>
-                      <p className="text-[9px] text-muted-foreground uppercase tracking-wider mt-1.5 opacity-60">
-                        {index === 3 ? "Just now" : `${index + 1} day ago`} • SWEET MEMORIES
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </CarouselItem>
-            ))}
-          </CarouselContent>
-          <CarouselPrevious className="-left-12 opacity-80 hover:opacity-100 bg-white border-rose-soft text-rose-deep hidden md:flex" />
-          <CarouselNext className="-right-12 opacity-80 hover:opacity-100 bg-white border-rose-soft text-rose-deep hidden md:flex" />
-        </Carousel>
+      {/* Scattered Cards */}
+      <div className="relative w-full h-full min-h-[80vh]">
         
-        {/* Pagination indicator hint for mobile */}
-        <p className="md:hidden text-center text-[10px] text-muted-foreground mt-4 font-body animate-pulse-soft">
-          Swipe left/right to see more
-        </p>
+        {/* Top Left Polaroid */}
+        <div className="absolute top-[10%] left-[15%] w-48 h-64 bg-white border border-rose-soft shadow-paper p-3 transform -rotate-6 animate-float-gentle">
+          <div className="w-full aspect-square bg-rose-soft/10 border border-rose-soft/20 flex items-center justify-center">
+             <Heart className="text-rose-soft/30 w-10 h-10" />
+          </div>
+        </div>
+
+        {/* Bottom Left Polaroid */}
+        <div className="absolute bottom-[15%] left-[5%] w-56 h-72 bg-white border border-rose-soft shadow-paper p-4 transform rotate-12 animate-float" style={{ animationDelay: "1s" }}>
+          <div className="w-full aspect-square bg-rose-soft/10 border border-rose-soft/20 flex items-center justify-center">
+             <Heart className="text-rose-soft/30 w-12 h-12" />
+          </div>
+        </div>
+
+        {/* Center Vertical Strip 1 */}
+        <div className="absolute top-[5%] left-[45%] w-32 h-[500px] bg-white border border-rose-soft shadow-paper p-2 flex flex-col gap-2 transform rotate-3 animate-float-slow">
+          {[1,2,3,4].map(i => (
+            <div key={i} className="w-full aspect-square bg-rose-soft/10 border border-rose-soft/20 flex items-center justify-center">
+               <Heart className="text-rose-soft/20 w-8 h-8" />
+            </div>
+          ))}
+        </div>
+
+        {/* Center Vertical Strip 2 */}
+        <div className="absolute top-[15%] left-[58%] w-32 h-[450px] bg-white border border-rose-soft shadow-paper p-2 flex flex-col gap-2 transform -rotate-2 animate-float" style={{ animationDelay: "0.5s" }}>
+          {[1,2,3].map(i => (
+            <div key={i} className="w-full aspect-square bg-rose-soft/10 border border-rose-soft/20 flex items-center justify-center">
+               <Heart className="text-rose-soft/20 w-8 h-8" />
+            </div>
+          ))}
+        </div>
+
+        {/* Right Side Cards */}
+        <div className="absolute top-[10%] right-[10%] w-44 h-56 bg-white border border-rose-soft shadow-paper p-3 transform rotate-6 animate-float-gentle" style={{ animationDelay: "1.5s" }}>
+          <div className="w-full aspect-square bg-rose-soft/10 border border-rose-soft/20 flex items-center justify-center">
+             <Heart className="text-rose-soft/30 w-10 h-10" />
+          </div>
+        </div>
+
+        <div className="absolute bottom-[20%] right-[15%] w-52 h-68 bg-white border border-rose-soft shadow-paper p-4 transform -rotate-3 animate-float">
+          <div className="w-full aspect-square bg-rose-soft/10 border border-rose-soft/20 flex items-center justify-center">
+             <Heart className="text-rose-soft/30 w-12 h-12" />
+          </div>
+        </div>
+
       </div>
 
-      <div className="flex justify-center z-10">
+      {/* Bottom Right Title */}
+      <div className="absolute bottom-10 right-10 z-10 text-right">
+        <h2 className="font-script text-6xl md:text-8xl text-rose-deep opacity-90 drop-shadow-sm">
+          Captured memories
+        </h2>
+      </div>
+
+      <div className="fixed bottom-10 left-10 z-20">
         <BackButton onClick={onBack} />
       </div>
     </div>
